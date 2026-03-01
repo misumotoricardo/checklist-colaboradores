@@ -1,0 +1,16 @@
+// Adicione este botão dentro da div "result" do seu código anterior
+<button class="main-btn" onclick="enviarRelatorio()" style="background:#e67e22;">ENVIAR POR E-MAIL</button>
+
+<script>
+function enviarRelatorio() {
+    const emailGestor = "seu-email@empresa.com.br"; // COLOQUE SEU E-MAIL AQUI
+    const tag = document.getElementById('tg').value;
+    const status = document.getElementById('resStatus').innerText;
+    const resumo = document.getElementById('resDados').innerText;
+
+    const assunto = encodeURIComponent(`RELATÓRIO: ${tag} - ${status}`);
+    const corpo = encodeURIComponent(`Prezados,\n\nSegue resumo da inspeção realizada:\n\n${resumo}\n\n*Nota: As fotos e assinatura constam no arquivo PDF em anexo.*`);
+
+    window.location.href = `mailto:${emailGestor}?subject=${assunto}&body=${corpo}`;
+}
+</script>
